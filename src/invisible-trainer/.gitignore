@@ -10,7 +10,7 @@ ttest
 z_demo_*
 
 __pycache__
-.idea
+../.idea
 .vscode
 runs
 log
