@@ -148,7 +148,7 @@ def get_args():
     parser.add_argument('-imgfile', type=str,
                         default='./data/mscoco2017/train2017/190109_180343_00154162.jpg',
                         help='path of your image file.', dest='imgfile')
-    parser.add_argument('-torch', type=bool, default=false,
+    parser.add_argument('-torch', type=bool, default=False,
                         help='use torch weights')
     args = parser.parse_args()
 
@@ -158,7 +158,7 @@ def get_args():
 if __name__ == '__main__':
     args = get_args()
     if args.imgfile:
-        detect_cv2(args.cfgfile, args.weightfile, args.imgfile)
+        detect_cv2(args.cfgfile, './cfg/yolov4.pth', './data/dog.jpg')
         # detect_imges(args.cfgfile, args.weightfile)
         # detect_cv2(args.cfgfile, args.weightfile, args.imgfile)
         # detect_skimage(args.cfgfile, args.weightfile, args.imgfile)

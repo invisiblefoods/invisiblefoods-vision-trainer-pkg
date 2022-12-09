@@ -1,17 +1,17 @@
-FROM ubuntu:focal
+FROM nvcr.io/nvidia/pytorch:20.12-py3
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    python3-dev \
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -q -y --no-install-recommends \
     python3-pip \
-    pkg-config \
-    libfreetype6-dev \
-    libpng-dev \
-    libqhull-dev \
-    build-essential \
+    libgl1 \
     && rm -rf /var/lib/apt/lists/*
 
+RUN python3 -m pip install --upgrade pip && \
+    python3 -m pip install scalene
+
 COPY invisible-trainer /invisible/src/invisible-trainer
+
 WORKDIR /invisible
 
-RUN python3 -m pip install --upgrade pip && \
-    python3 -m pip install -r src/invisible-trainer/requirements.txt
+CMD ["bash"]
